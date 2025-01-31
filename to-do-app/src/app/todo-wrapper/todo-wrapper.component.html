@@ -1,0 +1,10 @@
+<div class="wrapper">
+  <app-todo-form (newTodo)="addTodo($event)"></app-todo-form>
+  <app-todo-list
+    [todos]="todos"
+    (deleteTodo)="deleteTodo($event)"
+    (toggleComplete)="toggleComplete($event)"
+    (sortTodos)="sortTodos()"
+  >
+  </app-todo-list>
+</div>

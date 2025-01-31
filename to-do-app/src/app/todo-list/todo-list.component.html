@@ -1,0 +1,19 @@
+<div class="list-container">
+  <h3>Let's get some work done!</h3>
+  <ul class="task-list">
+    <li
+      *ngFor="let todo of todos; let i = index"
+      [class.completed]="todo.completed"
+    >
+      <div class="task-item">
+        <input
+          type="checkbox"
+          [checked]="todo.completed"
+          (change)="toggleComplete.emit(i); sortTodos.emit()"
+        />
+        <span [class.completed]="todo.completed">{{ todo.text }}</span>
+      </div>
+      <button class="delete-btn" (click)="deleteTodo.emit(i)">×</button>
+    </li>
+  </ul>
+</div>

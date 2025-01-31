@@ -1,0 +1,26 @@
+<div class="product-list">
+  <div
+    *ngFor="let product of products"
+    class="product-card"
+    [routerLink]="['/product', product.id]"
+  >
+    <img
+      [src]="product.thumbnail"
+      [alt]="product.title"
+      class="product-image"
+    />
+    <div class="product-details">
+      <h3>{{ product.title }}</h3>
+      <p class="description">
+        {{ product.description || "No description available." }}
+      </p>
+      <p class="price">{{ product.price | currency }}</p>
+      <p class="brand">Brand: {{ product.brand }}</p>
+      <p class="stock">Stock: {{ product.stock }}</p>
+      <p class="category">Category: {{ product.category }}</p>
+      <div class="rating">Rating: {{ product.rating }} ★</div>
+    </div>
+  </div>
+</div>
+
+<p>hello from products</p>
