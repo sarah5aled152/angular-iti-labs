@@ -1,11 +1,16 @@
 import { Routes } from '@angular/router';
-import { ProductListComponent } from './products/products.component';
+import { ProductsComponent } from './products/products.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 export const routes: Routes = [
-  { path: '', component: ProductListComponent },
-  { path: 'product', component: ProductListComponent },
+  { path: '', component: ProductsComponent },
+  { path: 'product', component: ProductsComponent },
   { path: 'product/:id', component: ProductDetailsComponent },
+
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: '**', component: NotFoundComponent },
 ];

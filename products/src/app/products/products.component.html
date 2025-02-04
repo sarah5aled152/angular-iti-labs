@@ -4,23 +4,39 @@
     class="product-card"
     [routerLink]="['/product', product.id]"
   >
-    <img
-      [src]="product.thumbnail"
-      [alt]="product.title"
-      class="product-image"
-    />
+    <div class="product-image-wrapper">
+      <img
+        [src]="product.thumbnail"
+        [alt]="product.title"
+        class="product-image"
+      />
+      <div class="product-badge" *ngIf="product.stock < 10">Low Stock!</div>
+    </div>
     <div class="product-details">
       <h3>{{ product.title }}</h3>
       <p class="description">
         {{ product.description || "No description available." }}
       </p>
       <p class="price">{{ product.price | currency }}</p>
-      <p class="brand">Brand: {{ product.brand }}</p>
-      <p class="stock">Stock: {{ product.stock }}</p>
-      <p class="category">Category: {{ product.category }}</p>
-      <div class="rating">Rating: {{ product.rating }} ★</div>
+      <div class="product-meta">
+        <span class="brand">{{ product.brand }}</span>
+        <span class="stock">{{ product.stock }} left</span>
+      </div>
+      <div class="product-footer">
+        <span class="category">{{ product.category }}</span>
+        <div class="rating">
+          <span class="rating-stars">
+            ★★★★★
+            <span
+              class="rating-overlay"
+              [style.width]="(5 - product.rating) * 20 + '%'"
+            >
+              ☆☆☆☆☆
+            </span>
+          </span>
+          <span class="rating-number">{{ product.rating }}</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-<p>hello from products</p>

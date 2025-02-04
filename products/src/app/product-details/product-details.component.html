@@ -1,9 +1,52 @@
-<div class="product-details" *ngIf="product">
-  <img [src]="product.thumbnail" alt="{{ product.title }}" />
-  <h2>{{ product.title }}</h2>
-  <p>{{ product.description }}</p>
-  <p><strong>Category:</strong> {{ product.category }}</p>
-  <p><strong>Brand:</strong> {{ product.brand }}</p>
-  <p><strong>Rating:</strong> {{ product.rating }}</p>
-  <p><strong>Price:</strong> {{ product.price | currency }}</p>
+<div class="product-details-container" *ngIf="product">
+  <div class="product-gallery">
+    <img [src]="product.thumbnail" [alt]="product.title" class="main-image" />
+    <div class="thumbnail-gallery">
+      <!-- Add more thumbnails here when available -->
+      <img [src]="product.thumbnail" [alt]="product.title" class="thumbnail" />
+    </div>
+  </div>
+
+  <div class="product-info">
+    <h1>{{ product.title }}</h1>
+    <div class="rating-section">
+      <div class="rating">
+        <span class="rating-stars">
+          ★★★★★
+          <span
+            class="rating-overlay"
+            [style.width]="(5 - product.rating) * 20 + '%'"
+          >
+            ☆☆☆☆☆
+          </span>
+        </span>
+        <span class="rating-number">{{ product.rating }}</span>
+      </div>
+    </div>
+
+    <div class="price-section">
+      <span class="price">{{ product.price | currency }}</span>
+      <span class="stock-status" [class.low-stock]="product.stock < 10">
+        {{ product.stock }} in stock
+      </span>
+    </div>
+
+    <p class="description">{{ product.description }}</p>
+
+    <div class="product-meta">
+      <div class="meta-item">
+        <span class="label">Category:</span>
+        <span class="value">{{ product.category }}</span>
+      </div>
+      <div class="meta-item">
+        <span class="label">Brand:</span>
+        <span class="value">{{ product.brand }}</span>
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <button class="btn-add-cart">Add to Cart</button>
+      <button class="btn-buy-now">Buy Now</button>
+    </div>
+  </div>
 </div>

@@ -8,7 +8,7 @@ import productsData from '../../assets/products.json';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css'],
+  styleUrls: ['./../app.component.css'],
 })
 export class ProductDetailsComponent {
   product: any;
